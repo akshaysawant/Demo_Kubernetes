@@ -17,7 +17,7 @@ public class CodeStateUserApp {
 
     private static ConfigurableApplicationContext ctx = null;
     private static final Logger LOG = LoggerFactory.getLogger(CodeStateUserApp.class);
-    final static String serverUrl = "http://localhost:9090";
+    final static String serverUrl = "http://dataservice.default.svc.cluster.local:8080";
 
     public static void main(String[] args) {
         ctx = SpringApplication.run(CodeStateUserApp.class, args);
