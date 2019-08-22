@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,6 +19,7 @@ public class CodeStateUserApp {
     private static ConfigurableApplicationContext ctx = null;
     private static final Logger LOG = LoggerFactory.getLogger(CodeStateUserApp.class);
     final static String serverUrl = "http://dataservice.default.svc.cluster.local";
+    private static Environment env;
 
     public static void main(String[] args) {
         ctx = SpringApplication.run(CodeStateUserApp.class, args);
@@ -79,6 +81,16 @@ public class CodeStateUserApp {
         }
 
         return "State Not Found for Code: " + state;
+    }
+
+    @GetMapping("/GetConfig")
+    public static String getConfig() {
+        return "Accessing ConfigMap to get APP_NAME.\nAPP_NAME: " + env.getProperty("APP_NAME");
+    }
+
+    @GetMapping("/GetSecret")
+    public static String getSecret() {
+        return "Accessing Secrets to get SECRET_KEY.\nSECRET_KEY: " + env.getProperty("SECRET_KEY");
     }
 
     @GetMapping("/exit")
