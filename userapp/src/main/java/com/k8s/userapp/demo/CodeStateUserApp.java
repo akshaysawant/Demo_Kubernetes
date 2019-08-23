@@ -41,8 +41,8 @@ public class CodeStateUserApp {
     @GetMapping("/CodeToState")
     public static String codeToState(@RequestParam(name = "code") String code) {
 
+        LOG.info("Getting state for zip code: " + code);
         try {
-            LOG.info("Getting state for zip code: " + code);
             String response = requestProcessedData(serverUrl + "/readDataForCode");
             String[] responseCodes = response.split("\n");
             LOG.info(response);
@@ -64,8 +64,8 @@ public class CodeStateUserApp {
     @GetMapping("/StateToCode")
     public static String stateToCode(@RequestParam(name = "state") String state) {
 
+        LOG.info("Getting zip code for state: " + state);
         try {
-            LOG.info("Getting zip code for state: " + state);
             String response = requestProcessedData(serverUrl + "/requestDataForState");
             String[] responseCodes = response.split("\n");
 
@@ -85,16 +85,19 @@ public class CodeStateUserApp {
 
     @GetMapping("/GetConfig")
     public static String getConfig() {
+        LOG.info("Getting ConfigMap info from ENV");
         return "Accessing ConfigMap to get APP_NAME.\nAPP_NAME: " + env.getProperty("APP_NAME");
     }
 
     @GetMapping("/GetSecret")
     public static String getSecret() {
+        LOG.info("Getting Secret info from ENV");
         return "Accessing Secrets to get SECRET_KEY.\nSECRET_KEY: " + env.getProperty("SECRET_KEY");
     }
 
     @GetMapping("/exit")
     public static void exitApp() {
+        LOG.info("Exiting Springboot App.");
         ctx.close();
     }
 }

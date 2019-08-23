@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: backend
+    tier: backend
+  name: dataservice
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+        tier: backend
+    spec:
+      containers:
+      - image: gcr.io/ultra-bearing-231304/backend:latest
+        name: dataservice
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        env:
+        - name: APP_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: special-config
+              key: APP_NAME
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: my-app-secret
+              key: SECRET_KEY
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always

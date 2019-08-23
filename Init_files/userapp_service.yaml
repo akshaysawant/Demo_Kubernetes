@@ -1,17 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: 2019-08-22T22:34:15Z
   labels:
     app: frontend
     tier: backend
   name: userapp
   namespace: default
-  resourceVersion: "174529"
-  selfLink: /api/v1/namespaces/default/services/userapp
-  uid: f8f9fb18-c52c-11e9-92e4-42010a8a0230
 spec:
-  clusterIP: 10.11.243.172
   externalTrafficPolicy: Cluster
   ports:
   - nodePort: 31792
@@ -21,9 +16,4 @@ spec:
   selector:
     app: frontend
     tier: backend
-  sessionAffinity: None
   type: LoadBalancer
-status:
-  loadBalancer:
-    ingress:
-    - ip: 35.227.187.178

@@ -164,6 +164,7 @@ public class CodeStateBEApp {
 
     @GetMapping("/exit")
     public static void exitApp() {
+	    LOG.info("Exiting Springboot App.");
         ctx.close();
     }
 

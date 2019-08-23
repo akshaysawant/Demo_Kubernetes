@@ -1,17 +1,17 @@
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: 2019-08-22T22:32:33Z
+  creationTimestamp: 2019-08-22T16:46:46Z
   labels:
     app: backend
     tier: backend
   name: dataservice
   namespace: default
-  resourceVersion: "174046"
+  resourceVersion: "112744"
   selfLink: /api/v1/namespaces/default/services/dataservice
-  uid: bbc0ff97-c52c-11e9-92e4-42010a8a0230
+  uid: 6ddb8b71-c4fc-11e9-92e4-42010a8a0230
 spec:
-  clusterIP: 10.11.246.56
+  clusterIP: 10.11.249.157
   ports:
   - port: 80
     protocol: TCP
