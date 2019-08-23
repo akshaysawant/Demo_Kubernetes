@@ -86,13 +86,15 @@ public class CodeStateUserApp {
     @GetMapping("/GetConfig")
     public static String getConfig() {
         LOG.info("Getting ConfigMap info from ENV");
-        return "Accessing ConfigMap to get APP_NAME.\nAPP_NAME: " + env.getProperty("APP_NAME");
+        // return "Accessing ConfigMap to get APP_NAME.\nAPP_NAME: " + env.getProperty("APP_NAME");
+        return "Accessing ConfigMap to get APP_NAME.\nAPP_NAME: " + System.getenv("APP_NAME");
     }
 
     @GetMapping("/GetSecret")
     public static String getSecret() {
         LOG.info("Getting Secret info from ENV");
-        return "Accessing Secrets to get SECRET_KEY.\nSECRET_KEY: " + env.getProperty("SECRET_KEY");
+        // return "Accessing Secrets to get SECRET_KEY.\nSECRET_KEY: " + env.getProperty("SECRET_KEY");
+        return "Accessing Secrets to get SECRET_KEY.\nSECRET_KEY: " + System.getenv("SECRET_KEY");
     }
 
     @GetMapping("/exit")

@@ -25,16 +25,5 @@ spec:
         - containerPort: 8080
           protocol: TCP
         resources: {}
-        env:
-        - name: APP_NAME
-          valueFrom:
-            configMapKeyRef:
-              name: special-config
-              key: APP_NAME
-        - name: SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: my-app-secret
-              key: SECRET_KEY
       dnsPolicy: ClusterFirst
       restartPolicy: Always
